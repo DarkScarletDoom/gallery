@@ -20,10 +20,23 @@ $(function() {
         content.addClass('active');
     }
 
+   let j = 1;
+    let timerId = setInterval(() => {
+        if(j == 4){
+            j = 0;
+        }
+        console.log(j);
+        make_the_main_image(j);
+        highlight($('#' + String(j)));
+        j++;
+    }, 2000);
+
     $(".photo").click(function() {
 
         let conteiner = $($(this));
         let id_img = this.id;
+    
+        clearInterval(timerId);
 
         highlight(conteiner);
         make_the_main_image(id_img);
